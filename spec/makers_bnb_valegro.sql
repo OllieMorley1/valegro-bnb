@@ -87,10 +87,15 @@ CREATE TABLE spaces (
     name TEXT, 
     description TEXT,
     ppn INT,
+    contact TEXT,
     -- FOREIGN KEYS
     user_id INT,
     CONSTRAINT fk_users_394 FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+INSERT INTO spaces (name, description, ppn, contact, user_id) VALUES
+('Buckingham palace', 'Be a royal for a day', 1000,'Ilyas@gmail.com', 1),
+('windsor castle', 'it is a good castle', 200, 'Emmanuel@gmail.com', 2);
 
 
 
