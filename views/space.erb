@@ -1,0 +1,35 @@
+<html>
+  <head></head>
+  <body>
+    <h1><%= @space.name %></h1>
+    <p>
+    <%= @space.description %>
+    </p>
+    <p>
+    £<%= @space.ppn%> per night
+    </p>
+    <p>
+    Contact: <%=@space.contact%> 
+    </p>
+  </body>
+  
+  <form action="/bookings" method="POST">
+
+  <label>Select a date: </label>
+  
+  <input type="date" id="date" name="trip-day"
+         min="2022-01-01" max="2024-12-31">
+  <input type="submit" value="Book Now">
+
+  </form>
+
+
+  <div>
+    <form action="/spaces/<%=@space.id%>" method="post">
+      <input type="submit" value="Delete Space">
+    </form>
+
+    <a href="/update/<%=@space.id%>/edit">Update Space</a>
+  </div>
+
+</html>
