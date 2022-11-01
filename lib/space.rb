@@ -1,3 +1,3 @@
 class Space
-    attr_accessor :id, :name, :description, :price_per_night, :user_id
+    attr_accessor :id, :name, :description, :ppn, :user_id, :contact
 end
