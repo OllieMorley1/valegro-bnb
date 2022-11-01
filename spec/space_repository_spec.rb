@@ -44,4 +44,32 @@ def reset_spaces_table
         expect(spaces.length).to eq(3)
         expect(spaces.last.name).to eq('O2 arena')
     end
+
+    it "update a space" do
+        repo = SpaceRepository.new()
+        space = repo.find(1)
+       
+        space.name = 'Parliament'
+        space.description = 'some people are in there'
+        space.contact = 'boris@gmail.com'
+
+        repo.update_space(space)
+
+        space = repo.find(1)
+
+        expect(space.name).to eq('Parliament')
+        expect(space.description).to eq('some people are in there')
+        expect(space.contact).to eq('boris@gmail.com')
+
+        
+    end
+
+    it "delete an entry with id 1" do
+        repo = SpaceRepository.new()
+        repo.delete_space(1)
+
+        spaces = repo.all
+        expect(spaces.length).to eq(1)
+
+    end
 end

@@ -18,7 +18,7 @@ class SpaceRepository
         #finds a particular space
         sql = 'SELECT * FROM spaces WHERE id = $1'
         params = id
-        p data = DatabaseConnection.exec_params(sql, [params])[0]
+        data = DatabaseConnection.exec_params(sql, [params])[0]
         return create_instance_of_space(data)
     end
 
@@ -30,12 +30,21 @@ class SpaceRepository
         return space
     end
     
-    def update_space(id)
+    def update_space(space)
         #updates any information on the space
+        sql = 'UPDATE spaces SET name = $1, description = $2, ppn = $3, contact = $4, user_id = $5 where id = $6;'
+        params = [ space.name, space.description, space.ppn, space.contact, space.user_id, space.id]
+        data = DatabaseConnection.exec_params(sql, params)
+        return ''
     end
 
     def delete_space(id)
         #deletes a specific space
+        sql = 'DELETE FROM spaces WHERE id = $1;'
+        params = [id]
+        DatabaseConnection.exec_params(sql, params)
+
+        return ''
     end
 
     private
