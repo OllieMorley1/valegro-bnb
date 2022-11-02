@@ -76,7 +76,31 @@ class Application < Sinatra::Base
     return redirect('/spaces')
   end
   
-#this is route is used for testing
+  ##################################### BOOKING ###############################
+
+
+  get 'bookings/:id' do
+    return erb(:booking)
+  end
+
+  post '/bookings' do
+    repo = BookingRepository.new
+    @booking = Booking.new
+#:id, :user_id, :space_id, :date, :approved
+    # @booking.user_id = params[:user_id]
+    @booking.space_id = params[:space_id]
+    @booking.date = params[:date] 
+    # @booking.contact = params[:contact]
+    # @booking.approved = false
+    repo.new_booking(@booking)
+
+
+    return redirect("/bookings/#{@booking.space_id}")
+  end
+
+
+
+  #this is route is used for testing
   get '/test' do 
     return erb(:test)
   end

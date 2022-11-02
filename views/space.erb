@@ -17,8 +17,15 @@
 
   <label>Select a date: </label>
   
-  <input type="date" id="date" name="trip-day"
+  <input type="date" id="date" name="date"
          min="2022-01-01" max="2024-12-31">
+  <label>Contact details:</label>
+
+  <% # input for contact details %>
+
+  <input type="text" id="contact" name="contact">   
+  <% # hidden space_id %>
+  <input type="hidden" name="space_id" value="<%=@space.id%>" >
   <input type="submit" value="Book Now">
 
   </form>
