@@ -2,9 +2,22 @@ require_relative "./booking"
 
 class BookingRepository
 
-     def users_bookings
+    def all_bookings
+        # lists all of the bookings
+        sql = 'SELECT * FROM bookings;'
+        data = DatabaseConnection.exec_params(sql, [])
+
+        bookings = []
+
+        data.each do |record|
+            bookings << create_instance_of_booking(record)
+        end
+        return bookings
+    end
+    
+    def users_bookings
         #list all of the users bookings
-     end 
+    end 
 
     def find(id)
         #finds a particular booking
@@ -22,12 +35,17 @@ class BookingRepository
         return booking
     end
     
-    def update_booking(id)
+    def update_booking(booking)
         #updates any booking information
+        sql = 'UPDATE bookings SET user_id = $1, space_id = $2, date = $3, approved = $4 where id = $5;'
+        params = [booking.user_id, booking.space_id, booking.date, booking.approved, booking.id]
+        DatabaseConnection.exec_params(sql, params)
     end
 
     def delete_booking(id)
         #deletes a booking
+        sql = 'DELETE FROM bookings WHERE id=$1;'
+        DatabaseConnection.exec_params(sql, [id])
     end
 
     private
