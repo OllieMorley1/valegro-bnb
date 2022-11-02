@@ -1,1 +1,8 @@
 @import "./component/card.css";
+@import "./component/navbar.css";
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
