@@ -1,16 +1,32 @@
 <html>
+    <head>
+       <link rel="stylesheet" type="text/css" href="/styles.css">
+        
+    </head>
     <body>
+   
+
     <h1>Choose where you want to stay, or <a href="/spaces/new">list a new space</a></h1>
 
-        <div>
-        <% @spaces.each do |space| %>
-            <p>
-            <p> IMAGE <%=space.id%></p>
-            <a href="/spaces/<%=space.id%>"><%= space.name %></a>
-            </p>
-        <% end %>
+        <div class="cards-container">
+
+
+            <% @spaces.each do |space| %>
+                <div class="card">
+                    <a href="/spaces/<%=space.id%>">
+                        <img src="https://picsum.photos/200" alt="flat" >
+                        <div class="text-container">
+                            <h3><%= space.name %></h3>
+                            <p><%= space.ppn %></p>
+                        </div>
+                    </a>
+                </div>
+            
+            <% end %>
         
         </div>
     
     </body>
 </html>
+
+
