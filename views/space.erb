@@ -13,6 +13,8 @@
     </p>
   </body>
   
+
+  <h2> Make a booking </h2>
   <form action="/bookings" method="POST">
 
   <label>Select a date: </label>
@@ -30,13 +32,15 @@
 
   </form>
 
-
+ <h2> Admin Centre </h2>
   <div>
-    <form action="/spaces/<%=@space.id%>" method="post">
-      <input type="submit" value="Delete Space">
-    </form>
-
     <a href="/update/<%=@space.id%>/edit">Update Space</a>
+
+    <form action="/spaces/<%=@space.id%>" method="post">
+    <p></p>
+
+    <input type="submit" value="Delete Space">
+    </form>
   </div>
 
 </html>

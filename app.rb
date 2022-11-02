@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative 'lib/space_repository'
+require_relative 'lib/booking_repository'
 require_relative 'lib/database_connection'
 
 DatabaseConnection.connect('valegrobnb_test')
@@ -33,6 +34,7 @@ class Application < Sinatra::Base
     @space = repo.find(@id)
     return erb(:space)
   end
+
   
     post '/spaces/:id' do
       repo = SpaceRepository.new
@@ -79,7 +81,10 @@ class Application < Sinatra::Base
   ##################################### BOOKING ###############################
 
 
-  get 'bookings/:id' do
+  get '/bookings/:id' do
+    @id = params[:id]
+    repo = BookingRepository.new
+    @booking = repo.find(@id)
     return erb(:booking)
   end
 
@@ -93,9 +98,9 @@ class Application < Sinatra::Base
     # @booking.contact = params[:contact]
     # @booking.approved = false
     repo.new_booking(@booking)
+    
+    return erb(:booking)
 
-
-    return redirect("/bookings/#{@booking.space_id}")
   end
 
 

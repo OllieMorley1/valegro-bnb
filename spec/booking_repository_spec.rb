@@ -14,7 +14,7 @@ def reset_bookings_table
 
   
 
-    it "return a specific booking " do
+    xit "return a specific booking " do
         repo = BookingRepository.new()
         booking = repo.find(1)
 
