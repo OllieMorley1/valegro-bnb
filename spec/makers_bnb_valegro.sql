@@ -102,10 +102,14 @@ INSERT INTO spaces (name, description, ppn, contact, user_id) VALUES
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
     date DATE,
-    approved TEXT,  
+    approved BOOLEAN DEFAULT FALSE,  
 -- FOREIGN KEYS
     user_id INT,
     space_id INT,
     CONSTRAINT fk_users_123 FOREIGN KEY (user_id) REFERENCES users(id),
     CONSTRAINT fk_spaces_123 FOREIGN KEY (space_id) REFERENCES spaces(id)
 );
+
+INSERT INTO bookings (user_id, space_id, approved, date) VALUES
+(1, 2, true ,'2022-11-02');
+
