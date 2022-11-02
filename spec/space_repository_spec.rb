@@ -12,7 +12,7 @@ def reset_spaces_table
       reset_spaces_table
     end
 
-    xit "returns all spaces" do
+    it "returns all spaces" do
         repo = SpaceRepository.new()
         spaces = repo.all
 
@@ -20,14 +20,14 @@ def reset_spaces_table
         expect(spaces[0].name).to eq('Buckingham palace')
     end
 
-    xit "return a specific space " do
+    it "return a specific space " do
         repo = SpaceRepository.new()
         space = repo.find(1)
 
         expect(space.name).to eq('Buckingham palace')
     end
 
-    xit "create a new space" do
+    it "create a new space" do
         repo = SpaceRepository.new()
 
         space = Space.new()
@@ -45,7 +45,7 @@ def reset_spaces_table
         expect(spaces.last.name).to eq('O2 arena')
     end
 
-    xit "update a space" do
+    it "update a space" do
         repo = SpaceRepository.new()
         space = repo.find(1)
        
@@ -64,7 +64,7 @@ def reset_spaces_table
         
     end
 
-    xit "delete an entry with id 1" do
+    it "delete an entry with id 1" do
         repo = SpaceRepository.new()
         repo.delete_space(1)
 
