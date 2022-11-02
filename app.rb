@@ -99,7 +99,8 @@ class Application < Sinatra::Base
     # @booking.approved = false
     repo.new_booking(@booking)
     
-    return erb(:booking)
+    x = repo.all_bookings.length
+    return redirect("/bookings/#{x}")
 
   end
 
