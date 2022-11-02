@@ -13,7 +13,7 @@ describe Application do
     let(:app) { Application.new }
 
     context "GET /spaces" do 
-        it "returns a list of all spaces" do 
+        xit "returns a list of all spaces" do 
         response = get('/spaces')
 
         expect(response.status).to eq 200
@@ -22,7 +22,7 @@ describe Application do
     end
 
     context "GET /spaces/new" do
-        it "returns form to create a new space" do
+        xit "returns form to create a new space" do
             response = get('/spaces/new')
             expect(response.status).to eq 200
             expect(response.body).to include('<form action="/spaces" method="POST">')
@@ -38,7 +38,7 @@ describe Application do
     end
 
     context "POST /spaces" do
-        it 'creates a new space on homepage' do
+        xit 'creates a new space on homepage' do
             repo = SpaceRepository.new
             space = Space.new
             post('/spaces', name: 'Emmanuel', description:'description for emma', ppn: 30, contact: '0745372838')
