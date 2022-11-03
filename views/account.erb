@@ -1,0 +1,35 @@
+<h3> Hi, <%= @user.name %> </h3>
+
+<div>
+    <h4> Update your account below </h4>
+    <form action="/account_page/update" method="POST">
+    <input type="hidden" id="id" name="id" value="<%=@user.id%>"/>
+    <label>Username:</label>
+    <input type="text" id="username" name="name" value="<%=@user.name%>"/>
+    <label>Email:</label>
+    <input type="text" id="password" name="email" value="<%=@user.email%>"/>
+    <label>Password:</label>
+    <input type="password" id="password" name="password"/>
+    <input type="submit" value="Update account" />
+    </form>
+</div>
+
+<div>
+
+<h4> Delete your account </h4>
+
+<form action="/delete" method="POST">
+
+<label> Confirm Password </label>
+
+<%# USER WILL HAVE TO PROVIDE ITS PASSWORD TO BE ABLE TO DELETE THE ACCOUNT %>
+
+<input type="password" name="password" id="password">
+
+<%# ONCE USER CLICKS ON THE DELETE ACCOUNT BUTTON, THE ACCOUNT IS DELETED%>
+
+<input type="submit" value="Delete Account">
+
+</form >
+
+</div>

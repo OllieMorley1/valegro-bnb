@@ -17,7 +17,7 @@ describe Application do
         response = get('/spaces')
 
         expect(response.status).to eq 200
-        expect(response.body).to include('<h1>Choose where you want to stay, or <a href="/spaces/new">list a new space</a></h1>')
+        expect(response.body).to include('<h1>Choose where you want to stay</h1>')
         end 
     end
 
@@ -48,4 +48,13 @@ describe Application do
         end
     end
 
+    context "POST /account_page/update" do
+        it 'updates account' do
+            repo = UserRepository.new
+            response = post('/account_page/update', id: 1, name: 'Test', email: 'test@gmail.com', password: 'pword')
+            expect(response.status).to eq 200
+            user = repo.find_user(1)
+            expect(user.name).to eq 'Test'
+        end
+    end
 end
