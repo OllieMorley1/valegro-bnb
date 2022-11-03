@@ -83,7 +83,14 @@ class Application < Sinatra::Base
   
   ##################################### BOOKING ###############################
 
+  get '/request' do 
+    
+    return erb(:request)
+  end
 
+  post '/request' do 
+  end
+######################################################
   get '/bookings/:id' do
     @id = params[:id]
     repo = BookingRepository.new
@@ -192,5 +199,7 @@ class Application < Sinatra::Base
       return erb(:delete_error)
     end
   end
+
+
 
 end
