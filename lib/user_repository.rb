@@ -1,5 +1,5 @@
 require_relative './user'
-
+require 'bcrypt'
 class UserRepository
 
     # def all
@@ -15,8 +15,10 @@ class UserRepository
 
     def new_user(user)
         #creates new user
+        encrypted_password = BCrypt::Password.create(user.password)
+
         sql = 'INSERT INTO users(name, email, password) VALUES($1, $2, $3);'
-        DatabaseConnection.exec_params(sql, [user.name, user.email, user.password])
+        DatabaseConnection.exec_params(sql, [user.name, user.email, encrypted_password])
     end
     
     def update_user(user)
@@ -31,6 +33,13 @@ class UserRepository
         #deletes a user's account
         sql = 'DELETE FROM users WHERE id= $1;'
         DatabaseConnection.exec_params(sql, [id])
+    end
+
+    def find_by_email(email)
+        #find a user using email
+        sql = 'SELECT * FROM users WHERE email = $1;'
+        result = DatabaseConnection.exec_params(sql, [email])[0]
+        return create_instance_of_user(result)
     end
 
     private
