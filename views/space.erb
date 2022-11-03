@@ -1,46 +1,44 @@
-<html>
-  <head></head>
-  <body>
-    <h1><%= @space.name %></h1>
-    <p>
-    <%= @space.description %>
-    </p>
-    <p>
-    £<%= @space.ppn%> per night
-    </p>
-    <p>
-    Contact: <%=@space.contact%> 
-    </p>
-  </body>
-  
+<div class="wrapper">
+  <div class="imgform_container">
+    <div class ="spaceimage">
+    <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
+    <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
+    <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
+    </div>
 
-  <h2> Make a booking </h2>
-  <form action="/bookings" method="POST">
-
-  <label>Select a date: </label>
-  
-  <input type="date" id="date" name="date"
-         min="2022-01-01" max="2024-12-31">
-  <label>Contact details:</label>
-
-  <% # input for contact details %>
-
-  <input type="text" id="contact" name="contact">   
-  <% # hidden space_id %>
-  <input type="hidden" name="space_id" value="<%=@space.id%>" >
-  <input type="submit" value="Book Now">
-
-  </form>
-
- <h2> Admin Centre </h2>
-  <div>
-    <a href="/update/<%=@space.id%>/edit">Update Space</a>
-
-    <form action="/spaces/<%=@space.id%>" method="post">
-    <p></p>
-
-    <input type="submit" value="Delete Space">
+    <form class="bookingform" action="/bookings" method="POST">
+      <label>Select a date: </label>
+      <input
+        type="date"
+        id="date"
+        name="date"
+        min="2022-01-01"
+        max="2024-12-31"
+      />
+      <p></p>
+      <label>Contact details:</label>
+      <input type="text" id="contact" name="contact" />
+      <input type="hidden" name="space_id" value="<%=@space.id%>" />
+      <input type="submit" value="Book Now" />
     </form>
   </div>
 
-</html>
+  <div class="namedesc">
+    <h2><%= @space.name %></h2>
+    <p>£<%= @space.ppn%> per night</p>
+    <p><%= @space.description %></p>
+  </div>
+
+  <div class="admincentre">
+    <h2>Admin Centre</h2>
+    <div>
+      <a class="updatespace" href="/update/<%=@space.id%>/edit">Update Space</a>
+
+      <form action="/spaces/<%=@space.id%>" method="post">
+        <p></p>
+
+        <input type="submit" value="Delete Space" />
+      </form>
+    </div>
+  </div>
+</div>
