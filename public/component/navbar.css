@@ -1,0 +1,25 @@
+#navbar{
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    height: 10%;
+}
+
+
+#logo{
+    margin-left: 10px;
+}
+
+.navbar-link-container{
+    margin-right: 10px;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-link{
+    text-decoration: none;
+
+}
