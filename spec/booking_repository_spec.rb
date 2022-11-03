@@ -35,7 +35,7 @@ def reset_bookings_table
       booking.user_id = 1
       booking.space_id = 2
       booking.date = "2023-01-02"
-      booking.approved = true
+      booking.status = "approved"
   
       repo.new_booking(booking)
 
@@ -52,7 +52,7 @@ def reset_bookings_table
       booking.user_id = 1
       booking.space_id = 2
       booking.date = "2023-01-01"
-      booking.approved = true
+      booking.status = "approved"
       
       repo.update_booking(booking)
 
@@ -70,5 +70,29 @@ def reset_bookings_table
       result = repo.all_bookings
 
       expect(result.length).to eq (0)
+    end
+
+    it "approve a booking" do 
+      repo = BookingRepository.new()
+
+      booking = repo.find(1)
+
+      repo.approve_booking(booking)
+
+      booking = repo.find(1)
+
+      expect(booking.status).to eq("approved")
+    end
+
+    it "reject a booking" do 
+      repo = BookingRepository.new()
+
+      booking = repo.find(1)
+
+      repo.reject_booking(booking)
+
+      booking = repo.find(1)
+
+      expect(booking.status).to eq("rejected")
     end
 end
