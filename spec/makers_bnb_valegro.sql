@@ -44,14 +44,14 @@ Booking:
     user_id
     space_id
     date
-    approved
+    status
 
 
 
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
     date DATE,
-    approved TEXT,  
+    status TEXT,  
 -- FOREIGN KEYS
     user_id INT,
     spaee_id INT,
@@ -102,7 +102,7 @@ INSERT INTO spaces (name, description, ppn, contact, user_id) VALUES
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
     date DATE,
-    approved BOOLEAN DEFAULT FALSE,  
+    status TEXT,  
 -- FOREIGN KEYS
     user_id INT,
     space_id INT,
@@ -110,6 +110,6 @@ CREATE TABLE bookings (
     CONSTRAINT fk_spaces_123 FOREIGN KEY (space_id) REFERENCES spaces(id)
 );
 
-INSERT INTO bookings (user_id, space_id, approved, date) VALUES
-(1, 2, true ,'2022-11-02');
+INSERT INTO bookings (user_id, space_id, status, date) VALUES
+(1, 2, 'pending' ,'2022-11-02');
 

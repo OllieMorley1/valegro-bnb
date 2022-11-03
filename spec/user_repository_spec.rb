@@ -74,9 +74,6 @@ def reset_users_table
         user = repo.find_by_email('Ilyas@gmail.com')
         expect(user.name).to eq("Ilyas")
     end
-    
-        
-    
 end
 
 # :id, :name, :email, :password

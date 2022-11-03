@@ -94,12 +94,12 @@ class Application < Sinatra::Base
   post '/bookings' do
     repo = BookingRepository.new
     @booking = Booking.new
-#:id, :user_id, :space_id, :date, :approved
+#:id, :user_id, :space_id, :date, :satus
     # @booking.user_id = params[:user_id]
     @booking.space_id = params[:space_id]
     @booking.date = params[:date] 
     # @booking.contact = params[:contact]
-    # @booking.approved = false
+    # @booking.status = approved
     repo.new_booking(@booking)
     
     x = repo.all_bookings.length
