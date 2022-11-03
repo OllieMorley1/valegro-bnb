@@ -14,7 +14,54 @@ class BookingRepository
         end
         return bookings
     end
-    
+
+    def return_space_owner_bookings(user_id)
+        sql = 'SELECT * FROM bookings JOIN spaces ON spaces.id = bookings.space_id WHERE bookings.status = $1 AND spaces.user_id = $2;'
+        data = DatabaseConnection.exec_params(sql, ["pending", user_id])
+        bookings = []
+
+        data.each do |record|
+            bookings << create_instance_of_booking(record)
+        end
+        return bookings
+    end
+
+    def return_pending_bookings(user_id)
+        sql = 'SELECT * FROM bookings WHERE user_id = $1 AND status = $2'
+        data = DatabaseConnection.exec_params(sql, [user_id, 'pending'])
+
+        bookings = []
+
+        data.each do |record|
+            bookings << create_instance_of_booking(record)
+        end
+        return bookings
+    end
+
+    def return_approve_bookings(user_id)
+        sql = 'SELECT * FROM bookings WHERE user_id = $1 AND status = $2'
+        data = DatabaseConnection.exec_params(sql, [user_id, 'approved'])
+
+        bookings = []
+
+        data.each do |record|
+            bookings << create_instance_of_booking(record)
+        end
+        return bookings
+    end
+
+    def return_rejected_bookings(user_id)
+        sql = 'SELECT * FROM bookings WHERE user_id = $1 AND status = $2'
+        data = DatabaseConnection.exec_params(sql, [user_id, 'rejected'])
+
+        bookings = []
+
+        data.each do |record|
+            bookings << create_instance_of_booking(record)
+        end
+        return bookings
+    end
+
     def users_bookings
         #list all of the users bookings
     end 
@@ -30,7 +77,7 @@ class BookingRepository
     def new_booking(booking)
         #creates a new booking
         sql = 'INSERT INTO bookings(user_id, space_id, date, status) VALUES($1, $2, $3, $4);'
-        DatabaseConnection.exec_params(sql, [booking.user_id, booking.space_id, booking.date, booking.status])
+        DatabaseConnection.exec_params(sql, [booking.user_id, booking.space_id, booking.date, 'pending'])
 
         return booking
     end
@@ -59,7 +106,6 @@ class BookingRepository
         params = ['rejected', booking.id]
         DatabaseConnection.exec_params(sql, params)
     end
-
 
     private
 
