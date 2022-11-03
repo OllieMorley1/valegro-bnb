@@ -1,1 +1,6 @@
 @import "./component/card.css";
+@import "./component/space.css";
+
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

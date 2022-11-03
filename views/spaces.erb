@@ -1,8 +1,4 @@
 <html>
-    <head>
-       <link rel="stylesheet" type="text/css" href="/styles.css">
-        
-    </head>
     <body>
    
 
@@ -14,7 +10,7 @@
             <% @spaces.each do |space| %>
                 <div class="card">
                     <a href="/spaces/<%=space.id%>">
-                        <img src="https://picsum.photos/200" alt="flat" >
+                        <img class="cardimage" src="https://picsum.photos/200" alt="flat" >
                         <div class="text-container">
                             <h3><%= space.name %></h3>
                             <p><%= space.ppn %></p>

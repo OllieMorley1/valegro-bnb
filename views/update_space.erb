@@ -1,25 +1,23 @@
 <html>
-
-<h2> Update <%=@space.name%> </h2>
-<form action="/update/<%=@space.id%>" method="post">
- <div>
-        <label > Name of the place: </label>
-        <input type="text" name="name">
+  <h2>Update Space: <%=@space.name%></h2>
+  <form action="/update/<%=@space.id%>" method="post">
+    <div>
+      <label> Name of the place: </label>
+      <input type="text" name="name" />
+    <div>
+      <label> Description: </label>
+      <input type="text" name="description" />
     </div>
-     <div>
-        <label > Description: </label>
-        <input type="text" name="description">
+    <div>
+      <label> Price per night: £</label>
+      <input type="text" name="ppn" />
     </div>
-     <div>
-        <label > Price per night: £</label>
-        <input type="int" name="ppn">
+    <div>
+      <label> Contact Details: </label>
+      <input type="int" name="contact" />
     </div>
-     <div>
-        <label > Contact Details: </label>
-        <input type="text" name="contact">
+    <div>
+      <input type="submit" value="Update Space" />
     </div>
-     <div>
-        <input type="submit" value="Update Space">
-    </div>
-</form>
+  </form>
 </html>
