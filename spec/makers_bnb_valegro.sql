@@ -74,11 +74,11 @@ CREATE TABLE users (
 );
  
 INSERT INTO users (name, email, password) VALUES
-('Ilyas', 'Ilyas@gmail.com', '12345'),
-('Emmanuel', 'Emmanuel@gmail.com', '12345'),
-('Giorgio', 'Giorgio@gmail.com', '12345'),
-('Ollie', 'Ollie@gmail.com', '12345'),
-('Deborah', 'Deborah@gmail.com', '12345');
+('Ilyas', 'Ilyas@gmail.com', '$2a$12$Bt9MBMhw.WZPlacasJPSC.vD15yHnMp2P6tu0V0SLfBMuEuph/RNu'),
+('Emmanuel', 'Emmanuel@gmail.com', '$2a$12$Bt9MBMhw.WZPlacasJPSC.vD15yHnMp2P6tu0V0SLfBMuEuph/RNu'),
+('Giorgio', 'Giorgio@gmail.com', '$2a$12$Bt9MBMhw.WZPlacasJPSC.vD15yHnMp2P6tu0V0SLfBMuEuph/RNu'),
+('Ollie', 'Ollie@gmail.com', '$2a$12$Bt9MBMhw.WZPlacasJPSC.vD15yHnMp2P6tu0V0SLfBMuEuph/RNu'),
+('Deborah', 'Deborah@gmail.com', '$2a$12$Bt9MBMhw.WZPlacasJPSC.vD15yHnMp2P6tu0V0SLfBMuEuph/RNu');
 
 
 
