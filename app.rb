@@ -89,8 +89,9 @@ class Application < Sinatra::Base
   end
 
   post '/request' do 
+
   end
-######################################################
+##########################################################
   get '/bookings/:id' do
     @id = params[:id]
     repo = BookingRepository.new
