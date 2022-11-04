@@ -1,57 +1,70 @@
-<h1>Requests</h1>
+
 <% user_repo = UserRepository.new() %>
 <% space_repo = SpaceRepository.new() %>
 
 
-<div class="request_made">
-    <h2> Your Bookings </h2>
-    <h3>Pending</h3>
-    <%@pending_requests.each do |request|%>
-            <p><%=request.date%></p>
-            <p><%=request.status%></p>
-            <p><%=space_repo.find(request.space_id).name%></p>
-            <p><%=user_repo.find_user(request.user_id).name%></p>
 
+<h1 class="your-booking-title"> your booking<h1>
+<div class="booking-container">
+    <div class="requested-received">
+        <h3> Requests received for your properties </h3>
 
-    <%end%>
-    <h3>Approved</h3>
-    <%@approved_requests.each do |request|%>
-            <p><%=request.date%></p>
-            <p><%=request.status%></p>
-            <p><%=request.space_id%></p>
+        <%@requests_received.each do |booking|%>
+            <div class="card-booking-container">
+                <p>Date:<%=booking.date%></p>
+                <p>Space:<%=space_repo.find(booking.space_id).name%></p>
+                <p>User:<%=user_repo.find_user(booking.user_id).name%></p>
 
-    <%end%>
-    <h3>Rejected</h3>
-    <%@rejected_requests.each do |request|%>
-            <p><%=request.date%></p>
-            <p><%=request.status%></p>
-            <p><%=request.space_id%></p>
+                <div class="btn-container">   
+                    <form class="btn-approve" action="/requests/approve" method="POST">
+                        <input type="hidden" name="id" value="<%=booking.id%>">
+                        <input type="submit"  value="Approve">
+                    </form>
+                    <form class="btn-reject" action="/requests/reject" method="POST">
+                        <input type="hidden" name="id" value="<%=booking.id%>">
+                        <input type="submit"  value="Reject">
+                    </form>
+                </div>   
 
-    <%end%>
-    
-  
+            </div>
+
+        <%end%>
+    </div>
+
+    <div class="my-booking">
+         <h2> Your Bookings </h2>
+         <h3>Pending</h3>
+         <%@pending_requests.each do |request|%>
+            <div class="card-booking-container <%=request.status%>">
+                <p><%=request.date%></p>
+                <p><%=request.status%></p>
+                <p><%=space_repo.find(request.space_id).name%></p>
+                <p><%=user_repo.find_user(request.user_id).name%></p>
+            </div>
+
+        <%end%>
+        <h3>Approved</h3>
+        <%@approved_requests.each do |request|%>
+            <div class="card-booking-container <%=request.status%>">
+                <p><%=request.date%></p>
+                <p><%=request.status%></p>
+                <p><%=request.space_id%></p>
+            </div>
+        <%end%>
+        <h3>Rejected</h3>
+        <%@rejected_requests.each do |request|%>
+            <div class="card-booking-container <%=request.status%>">
+                <p><%=request.date%></p>
+                <p><%=request.status%></p>
+                <p><%=request.space_id%></p>
+            </div>
+        <%end%>
+        
+    </div>
+
 </div>
 
 
-<div class="request_received">
-<h3> Requests received for your properties </h3>
 
-    <%@requests_received.each do |booking|%>
-        <p><%=booking.id%></p>
 
-        <p><%=booking.date%></p>
-        <p><%=booking.status%></p>
-        <p><%=booking.space_id%></p>
-
-        <form action="/requests/approve" method="POST">
-            <input type="hidden" name="id" value="<%=booking.id%>">
-            <input type="submit"  value="Approve">
-        </form>
-        <form action="/requests/reject" method="POST">
-            <input type="hidden" name="id" value="<%=booking.id%>">
-            <input type="submit"  value="Reject">
-        </form>  
-
-    <%end%>
-</div>
 

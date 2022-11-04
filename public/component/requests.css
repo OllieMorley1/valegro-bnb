@@ -1,0 +1,46 @@
+.your-booking-title{
+    text-align: center;
+    margin: 12px 0;
+}
+
+.booking-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.requested-received,
+.my-booking{
+    width: 45%;
+    border: black solid 4px;
+}
+
+.card-booking-container{
+    padding: 12px;
+    background-color: aqua;
+    width: 90%;
+    margin: 16px auto;
+    border-radius: 12px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: space-around;
+    margin: 16px 0;
+}
+
+/* .btn-approve,
+.btn-reject{
+    margin-bottom: 10px;
+} */
+
+.rejected{
+    background-color: red;
+}
+
+.approved{
+    background-color: green;
+}
+
+.pending{
+    background-color: orange;
+}
