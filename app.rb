@@ -68,6 +68,7 @@ end
     @space.description = params[:description]
     @space.ppn = params[:ppn] #price_per_night
     @space.contact = params[:contact]
+    @space.user_id = session[:user_id]
     repo.new_space(@space)
 
     return redirect('/spaces')
@@ -132,9 +133,7 @@ end
     @booking = Booking.new
     @booking.space_id = params[:space_id]
     @booking.date = params[:date] 
-    # @booking.user_id = params[:user_id]
-    # @booking.contact = params[:contact]
-    # @booking.status = approved
+    @booking.user_id = session[:user_id]
     if repo.check_availability(@booking) == 'available'
       repo.new_booking(@booking)
       x = repo.all_bookings.length
