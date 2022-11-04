@@ -16,7 +16,7 @@ def reset_bookings_table
       repo = BookingRepository.new()
       bookings = repo.all_bookings
 
-      expect(bookings.length).to eq(4)
+      expect(bookings.length).to eq(8)
     end
 
     it "return a specific booking " do
@@ -39,7 +39,7 @@ def reset_bookings_table
   
       repo.new_booking(booking)
 
-      booking = repo.find(5)
+      booking = repo.find(9)
 
       expect(booking.date).to eq("2023-01-02")
       expect(booking.space_id).to eq("2")
@@ -69,7 +69,7 @@ def reset_bookings_table
 
       result = repo.all_bookings
 
-      expect(result.length).to eq (3)
+      expect(result.length).to eq(7)
     end
 
     it "approve a booking and reject the rest of the bookings on the same date and space" do 
@@ -105,7 +105,7 @@ def reset_bookings_table
 
       bookings = repo.return_space_owner_bookings(2)
 
-      expect(bookings.length).to eq(2)
+      expect(bookings.length).to eq(5)
     end 
 
     it "return all approved bookings to user" do
@@ -121,7 +121,7 @@ def reset_bookings_table
 
       bookings = repo.return_rejected_bookings(1)
 
-      expect(bookings.length).to eq(1)
+      expect(bookings.length).to eq(2)
     end
 
     it "return all pending bookings to user" do
@@ -129,6 +129,6 @@ def reset_bookings_table
 
       bookings = repo.return_pending_bookings(1)
 
-      expect(bookings.length).to eq(1)
+      expect(bookings.length).to eq(2)
     end
 end
