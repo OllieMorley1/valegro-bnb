@@ -74,11 +74,28 @@ class BookingRepository
         return create_instance_of_booking(data)
     end
 
+    def check_availability(booking)
+        sql = 'SELECT * FROM bookings WHERE space_id = $1 AND date = $2 AND status = $3'
+        data = DatabaseConnection.exec_params(sql, [booking.space_id, booking.date, 'approved'])
+
+        bookings = []
+
+        data.each do |record|
+            bookings << create_instance_of_booking(record)
+        end
+
+        if bookings.length == 0
+            return "available"
+        else
+            return "not available"
+        end
+    end
+
     def new_booking(booking)
         #creates a new booking
         sql = 'INSERT INTO bookings(user_id, space_id, date, status) VALUES($1, $2, $3, $4);'
         DatabaseConnection.exec_params(sql, [booking.user_id, booking.space_id, booking.date, 'pending'])
-
+        
         return booking
     end
     
