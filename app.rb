@@ -130,16 +130,19 @@ end
   post '/bookings' do
     repo = BookingRepository.new
     @booking = Booking.new
-#:id, :user_id, :space_id, :date, :satus
-    # @booking.user_id = params[:user_id]
     @booking.space_id = params[:space_id]
     @booking.date = params[:date] 
+    # @booking.user_id = params[:user_id]
     # @booking.contact = params[:contact]
     # @booking.status = approved
-    repo.new_booking(@booking)
-    
-    x = repo.all_bookings.length
-    return redirect("/bookings/#{x}")
+    if repo.check_availability(@booking) == 'available'
+      repo.new_booking(@booking)
+      x = repo.all_bookings.length
+      return redirect("/bookings/#{x}")
+
+    else
+      return erb(:booking_error)
+    end
 
   end
 
