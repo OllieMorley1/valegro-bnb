@@ -1,4 +1,7 @@
 <h1>Requests</h1>
+<% user_repo = UserRepository.new() %>
+<% space_repo = SpaceRepository.new() %>
+
 
 <div class="request_made">
     <h2> Your Bookings </h2>
@@ -6,7 +9,9 @@
     <%@pending_requests.each do |request|%>
             <p><%=request.date%></p>
             <p><%=request.status%></p>
-            <p><%=request.space_id%></p>
+            <p><%=space_repo.find(request.space_id).name%></p>
+            <p><%=user_repo.find_user(request.user_id).name%></p>
+
 
     <%end%>
     <h3>Approved</h3>

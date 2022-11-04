@@ -17,7 +17,7 @@ describe Application do
         response = get('/spaces')
 
         expect(response.status).to eq 200
-        expect(response.body).to include('<h1>Choose where you want to stay</h1>')
+        expect(response.body).to include('<h1>Where do you want to stay?</h1>')
         end 
     end
 
