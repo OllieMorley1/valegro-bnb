@@ -6,9 +6,21 @@
         <div id="navbar">
             <div id="logo">LOGO</div>
             <div class="navbar-link-container">
-                <a class="navbar-link" href="/spaces/new">Add a space</a>
+
                 <a class="navbar-link" href="/spaces">Listings</a>
-                <a class="navbar-link" href="/requests">Request</a>
+
+
+                <% if session[:user_id] != nil %>
+                    <a class="navbar-link" href="/spaces/new">Add a space</a>
+                    
+                    <a class="navbar-link" href="/requests">Requests</a>
+
+                    <a class="navbar-link" href="/account_page">Your Account</a>
+
+                    <form class="navbar-link" action='/logout' method="post">
+                    <input type="submit" value="Log out" />
+                    </form>
+                <% end %>
                 
 
             </div>

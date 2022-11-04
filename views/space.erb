@@ -1,9 +1,9 @@
 <div class="wrapper">
   <div class="imgform_container">
-    <div class ="spaceimage">
-    <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
-    <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
-    <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
+    <div class="spaceimage">
+      <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
+      <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
+      <img class="imgscroll" src="https://picsum.photos/200" alt="flat" />
     </div>
 
     <form class="bookingform" action="/bookings" method="POST">
@@ -29,6 +29,7 @@
     <p><%= @space.description %></p>
   </div>
 
+  <% if session[:user_id] == @space.user_id %>
   <div class="admincentre">
     <h2>Admin Centre</h2>
     <div>
@@ -42,3 +43,4 @@
     </div>
   </div>
 </div>
+<% end %>

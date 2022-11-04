@@ -70,7 +70,8 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT,
-    password TEXT
+    password TEXT,
+    UNIQUE (email)
 );
  
 INSERT INTO users (name, email, password) VALUES
