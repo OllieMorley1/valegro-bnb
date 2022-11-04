@@ -99,14 +99,14 @@ class Application < Sinatra::Base
     return redirect('/requests')
   end
 
+
   post '/requests/reject' do 
     booking_repo = BookingRepository.new()
     booking = booking_repo.find(params[:id])
     booking_repo.reject_booking(booking)
     return redirect('/requests')
   end
-  
-#######
+ 
   get '/bookings/:id' do
     @id = params[:id]
     repo = BookingRepository.new

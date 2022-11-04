@@ -95,10 +95,18 @@ class BookingRepository
         DatabaseConnection.exec_params(sql, [id])
     end
 
-    def approve_booking(booking)
+    def approve_booking_and_reject_the_rest(booking)
         sql = 'UPDATE bookings SET status = $1 WHERE id = $2;'
         params = ['approved', booking.id]
         DatabaseConnection.exec_params(sql, params)
+
+        # reject_all_other_pending_bookings(booking)
+        sql = 'SELECT * FROM bookings WHERE space_id = $1 AND date = $2 AND status = $3'
+        data = DatabaseConnection.exec_params(sql, [booking.space_id, booking.date, 'pending'])
+
+        data.each do |record|
+            reject_booking(create_instance_of_booking(record))
+        end
     end
 
     def reject_booking(booking)

@@ -111,10 +111,17 @@ CREATE TABLE bookings (
 );
 
 INSERT INTO bookings (user_id, space_id, status, date) VALUES
-(1, 2, 'pending' ,'2022-11-02'),
+(1, 2, 'pending' ,'2022-11-01'),
+(1, 2, 'rejected' ,'2022-11-02'),
 (1, 2, 'approved' ,'2022-11-03'),
+
 (1, 2, 'rejected' ,'2022-11-01'),
 (1, 2, 'pending' ,'2022-11-02'),
 (2, 2, 'pending' ,'2022-11-02'),
 (3, 2, 'pending' ,'2022-11-02');
+
+(2, 2, 'pending' ,'2022-11-01');
+
+
+
 
