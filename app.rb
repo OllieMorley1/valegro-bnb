@@ -16,6 +16,19 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  post '/logout' do
+    session[:user_id] = nil
+    return redirect('/')
+  end
+
+  get '/' do
+    if session[:user_id] == nil
+      return erb(:login)
+    else
+      return redirect('/spaces')
+  end
+end
+
   #form for listing a new space
   get '/spaces/new' do
     return erb(:newspace)
@@ -157,7 +170,11 @@ class Application < Sinatra::Base
   end
 
   get '/login' do
-    return erb(:login)
+    if session[:user_id] == nil
+      return erb(:login)
+    else
+      return redirect('/spaces')
+    end
   end
 
   post '/login' do
