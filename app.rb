@@ -95,7 +95,7 @@ class Application < Sinatra::Base
   post '/requests/approve' do 
     booking_repo = BookingRepository.new()
     booking = booking_repo.find(params[:id])
-    booking_repo.approve_booking(booking)
+    booking_repo.approve_booking_and_reject_the_rest(booking)
     return redirect('/requests')
   end
 
