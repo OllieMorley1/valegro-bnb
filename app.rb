@@ -4,7 +4,7 @@ require_relative 'lib/space_repository'
 require_relative 'lib/booking_repository'
 require_relative 'lib/database_connection'
 require_relative 'lib/user_repository'
-# require 'bcrypt'
+require 'bcrypt'
 
 DatabaseConnection.connect('valegrobnb_test')
 
@@ -83,15 +83,30 @@ class Application < Sinatra::Base
   
   ##################################### BOOKING ###############################
 
-  get '/request' do 
-    
-    return erb(:request)
+  get '/requests' do 
+    booking_repo =BookingRepository.new()
+    @requests_received = booking_repo.return_space_owner_bookings(session[:user_id])
+    @pending_requests = booking_repo.return_pending_bookings(session[:user_id])
+    @rejected_requests = booking_repo.return_rejected_bookings(session[:user_id])
+    @approved_requests = booking_repo.return_approve_bookings(session[:user_id])
+    return erb(:requests)
   end
 
-  post '/request' do 
-
+  post '/requests/approve' do 
+    booking_repo = BookingRepository.new()
+    booking = booking_repo.find(params[:id])
+    booking_repo.approve_booking(booking)
+    return redirect('/requests')
   end
-##########################################################
+
+
+  post '/requests/reject' do 
+    booking_repo = BookingRepository.new()
+    booking = booking_repo.find(params[:id])
+    booking_repo.reject_booking(booking)
+    return redirect('/requests')
+  end
+ 
   get '/bookings/:id' do
     @id = params[:id]
     repo = BookingRepository.new

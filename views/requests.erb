@@ -1,0 +1,52 @@
+<h1>Requests</h1>
+
+<div class="request_made">
+    <h2> Your Bookings </h2>
+    <h3>Pending</h3>
+    <%@pending_requests.each do |request|%>
+            <p><%=request.date%></p>
+            <p><%=request.status%></p>
+            <p><%=request.space_id%></p>
+
+    <%end%>
+    <h3>Approved</h3>
+    <%@approved_requests.each do |request|%>
+            <p><%=request.date%></p>
+            <p><%=request.status%></p>
+            <p><%=request.space_id%></p>
+
+    <%end%>
+    <h3>Rejected</h3>
+    <%@rejected_requests.each do |request|%>
+            <p><%=request.date%></p>
+            <p><%=request.status%></p>
+            <p><%=request.space_id%></p>
+
+    <%end%>
+    
+  
+</div>
+
+
+<div class="request_received">
+<h3> Requests received for your properties </h3>
+
+    <%@requests_received.each do |booking|%>
+        <p><%=booking.id%></p>
+
+        <p><%=booking.date%></p>
+        <p><%=booking.status%></p>
+        <p><%=booking.space_id%></p>
+
+        <form action="/requests/approve" method="POST">
+            <input type="hidden" name="id" value="<%=booking.id%>">
+            <input type="submit"  value="Approve">
+        </form>
+        <form action="/requests/reject" method="POST">
+            <input type="hidden" name="id" value="<%=booking.id%>">
+            <input type="submit"  value="Reject">
+        </form>  
+
+    <%end%>
+</div>
+

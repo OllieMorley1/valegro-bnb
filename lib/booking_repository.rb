@@ -16,7 +16,7 @@ class BookingRepository
     end
 
     def return_space_owner_bookings(user_id)
-        sql = 'SELECT * FROM bookings JOIN spaces ON spaces.id = bookings.space_id WHERE bookings.status = $1 AND spaces.user_id = $2;'
+        sql = 'SELECT bookings.id, bookings.date, bookings.user_id, bookings.space_id, bookings.status, spaces.name, spaces.description, spaces.ppn, spaces.contact, spaces.user_id  FROM bookings JOIN spaces ON spaces.id = bookings.space_id WHERE bookings.status = $1 AND spaces.user_id = $2;'
         data = DatabaseConnection.exec_params(sql, ["pending", user_id])
         bookings = []
 
