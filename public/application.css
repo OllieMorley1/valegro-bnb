@@ -1,7 +1,7 @@
 @import "./component/card.css";
 @import "./component/navbar.css";
 @import "./component/space.css";
-
+@import "./component/spaces.css";
 
 * {
     margin: 0;

@@ -14,9 +14,10 @@
 
 .navbar-link-container{
     margin-right: 10px;
-    width: 20%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-link{
