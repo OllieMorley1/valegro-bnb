@@ -2,6 +2,7 @@
 @import "./component/navbar.css";
 @import "./component/space.css";
 @import "./component/spaces.css";
+@import "./component/requests.css";
 
 * {
     margin: 0;
