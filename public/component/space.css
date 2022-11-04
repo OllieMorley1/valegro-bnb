@@ -1,6 +1,6 @@
 html {
  
-  /* background-color: #3f72af; */
+  background-color: #3f72af;
 }
 
 .wrapper {
@@ -8,11 +8,14 @@ html {
   width: 50%;
 }
 .imgform_container {
-  margin: 0 auto;
+  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
 }
 
+.namedesc{
+  margin-top: 25px;
+}
 .imgscroll {
   max-width: 200px;
   max-height: 200px;
@@ -36,6 +39,9 @@ html {
 }
 
 .bookingform {
+  align-self: flex-end;
+  bottom: 0px;
+  height: 80px;
   background-color: white;
   border-radius: 10px;
   background-color: #f2f2f2;
@@ -47,28 +53,6 @@ html {
   0 4px 4px rgba(0,0,0,0.12), 
   0 8px 8px rgba(0,0,0,0.12),
   0 16px 16px rgba(0,0,0,0.12);
-}
-
-input[type="text"] {
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
-}
-
-input[type="int"] {
-  width: 100%; /* Full width */
-  padding: 12px; /* Some padding */
-  border: 1px solid #ccc; /* Gray border */
-  border-radius: 4px; /* Rounded borders */
-  box-sizing: border-box; /* Make sure that padding and width stays in place */
-  margin-top: 6px; /* Add a top margin */
-  margin-bottom: 16px; /* Bottom margin */
-  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
 }
 
 .updatespace{
@@ -95,4 +79,11 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #45a049;
+}
+
+.admincentre{
+  margin-top: 50px;
+}
+.adminform {
+margin-top: 20px;
 }

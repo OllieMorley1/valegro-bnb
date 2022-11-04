@@ -16,8 +16,6 @@
         max="2024-12-31"
       />
       <p></p>
-      <label>Contact details:</label>
-      <input type="text" id="contact" name="contact" />
       <input type="hidden" name="space_id" value="<%=@space.id%>" />
       <input type="submit" value="Book Now" />
     </form>
@@ -32,7 +30,7 @@
   <% if session[:user_id] == @space.user_id %>
   <div class="admincentre">
     <h2>Admin Centre</h2>
-    <div>
+    <div class="adminform">
       <a class="updatespace" href="/update/<%=@space.id%>/edit">Update Space</a>
 
       <form action="/spaces/<%=@space.id%>" method="post">
